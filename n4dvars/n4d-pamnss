@@ -1,0 +1,27 @@
+{
+    "ENABLE_NSS_LDAP": {
+        "packages": [
+            "n4d-pamnss"
+        ]
+    }, 
+    "ENABLE_NSS_LIKEWISE": {
+        "packages": [
+            "n4d-pamnss"
+        ]
+    }, 
+    "CLIENT_LDAP_URI": {
+        "packages": [
+            "n4d-pamnss"
+        ]
+    }, 
+    "CLIENT_LDAP_URI_NOSSL": {
+        "packages": [
+            "n4d-pamnss"
+        ]
+    }, 
+    "LDAP_BASE_DN": {
+        "packages": [
+            "n4d-pamnss"
+        ]
+    }
+}

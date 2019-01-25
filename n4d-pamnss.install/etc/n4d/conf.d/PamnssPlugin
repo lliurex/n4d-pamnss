@@ -1,0 +1,16 @@
+[SETUP]
+type=python
+path=PamnssPlugin.py
+class=PamnssPlugin
+[METHODS]
+startup=admin,admins, adm
+configure_nsswitch=admin,admins, adm
+configure_ldap_environment_client=admin,admins, adm
+configure_ldap=admin, admins, adm
+check_network_authentication=anonymous
+backup_configuration=admin, admins, adm
+restore_configuration=admin, admins, adm
+restore=admin, admins, adm
+backup=admin, admins, adm
+test=anonymous
+apt=anonymous

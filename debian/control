@@ -2,11 +2,11 @@ Source: n4d-pamnss
 Section: misc
 Priority: standard
 Maintainer: Equipo LliureX <lliurex@gva.es>
-Build-Depends: debhelper (>= 7), n4d-dev
-Standards-Version: 3.9.7
+Build-Depends: debhelper (>= 10), n4d-dev
+Standards-Version: 4.1.2
 
 Package: n4d-pamnss
 Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends},python-jinja2,libpam-ldap,libnss-ldapd, n4d-lliurex-base (>= 0.7)
+Depends: ${shlibs:Depends}, ${misc:Depends},python2-jinja2,libpam-ldap,libnss-ldapd, n4d-lliurex-base (>= 0.7)
 Description:  N4D Plugin for pamnss
  Pamnss plugin configuration for n4d 

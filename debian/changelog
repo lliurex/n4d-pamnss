@@ -1,0 +1,232 @@
+n4d-pamnss (0.41) bionic; urgency=medium
+
+  * Adding sudo group
+
+ -- Juan Ramon Pelegrina <juapesai@hotmail.com>  Thu, 14 Feb 2019 12:36:26 +0100
+
+n4d-pamnss (0.40) bionic; urgency=medium
+
+  * First bionic release
+
+ -- Hector Garcia Huerta <hectorgh@gmail.com>  Fri, 25 Jan 2019 09:57:30 +0100
+
+n4d-pamnss (0.32) xenial; urgency=high
+
+  * Trying to be faster when retrying configuration
+  * Removing temporal files
+
+ -- Hector Garcia Huerta <hectorgh@gmail.com>  Wed, 08 Nov 2017 14:18:18 +0100
+
+n4d-pamnss (0.31) xenial; urgency=high
+
+  * Restarting nslcd twice when changing ldap server ip
+
+ -- Hector Garcia Huerta <hectorgh@gmail.com>  Tue, 02 May 2017 17:53:03 +0200
+
+n4d-pamnss (0.30.1) xenial; urgency=high
+
+  * Reverting to libpam-ldap
+
+ -- Hector Garcia Huerta <hectorgh@gmail.com>  Fri, 21 Apr 2017 14:11:34 +0200
+
+n4d-pamnss (0.30) xenial; urgency=high
+
+  * Removing old upstart calls
+
+ -- Hector Garcia Huerta <hectorgh@gmail.com>  Wed, 19 Apr 2017 09:22:15 +0200
+
+n4d-pamnss (0.29) xenial; urgency=high
+
+  * Adding backup to NSLCD file 
+
+ -- Daniel Duran Vecino <daduve@gmail.com>  Wed, 16 Mar 2016 10:01:58 +0100
+
+n4d-pamnss (0.28) xenial; urgency=high
+
+  * Mapping gecos variable to real name in Epoptes
+
+ -- Daniel Duran Vecino <daduve@gmail.com>  Wed, 16 Mar 2016 09:19:43 +0100
+
+n4d-pamnss (0.27) xenial; urgency=high
+
+  * Adding nslcd configuration
+
+ -- Hector Garcia Huerta <hectorgh@gmail.com>  Mon, 22 Feb 2016 10:17:44 +0100
+
+n4d-pamnss (0.26) xenial; urgency=high
+
+  * removing old init files
+
+ -- Hector Garcia Huerta <hectorgh@gmail.com>  Tue, 02 Feb 2016 17:22:38 +0100
+
+n4d-pamnss (0.25) xenial; urgency=high
+
+  * First xenial release
+
+ -- Hector Garcia Huerta <hectorgh@gmail.com>  Tue, 02 Feb 2016 10:05:46 +0100
+
+n4d-pamnss (0.24.1) trusty; urgency=high
+
+  * Fixed control file
+
+ -- Hector Garcia Huerta <hectorgh@gmail.com>  Wed, 07 Oct 2015 08:49:36 +0200
+
+n4d-pamnss (0.24) trusty; urgency=high
+
+  * Trying new dependencies
+
+ -- Hector Garcia Huerta <hectorgh@gmail.com>  Wed, 07 Oct 2015 08:45:30 +0200
+
+n4d-pamnss (0.23) trusty; urgency=high
+
+  * Removing dependences from a parallel time line
+
+ -- Hector Garcia Huerta <hectorgh@gmail.com>  Tue, 06 Oct 2015 14:49:34 +0200
+
+n4d-pamnss (0.22) trusty; urgency=high
+
+  * libnss-ldapd new dependency (instead of libnss-ldap)
+
+ -- Hector Garcia Huerta <hectorgh@gmail.com>  Tue, 06 Oct 2015 12:15:33 +0200
+
+n4d-pamnss (0.21) trusty; urgency=high
+
+  * Cleaning nsswitch and ldap conf on boot
+
+ -- Hector Garcia Huerta <hectorgh@gmail.com>  Mon, 13 Jul 2015 12:49:53 +0200
+
+n4d-pamnss (0.20) trusty; urgency=high
+
+  * keeping groups nscd cache
+
+ -- Hector Garcia Huerta <hectorgh@gmail.com>  Wed, 27 May 2015 13:21:25 +0200
+
+n4d-pamnss (0.19) trusty; urgency=medium
+
+  * Servers ldap configuration points to localhost, clients to server IP
+
+ -- Hector Garcia Huerta <hectorgh@gmail.com>  Tue, 26 May 2015 15:56:52 +0200
+
+n4d-pamnss (0.18) trusty; urgency=high
+
+  * Added retries to pam config files configuration
+
+ -- Hector Garcia Huerta <hectorgh@gmail.com>  Mon, 23 Feb 2015 13:41:55 +0100
+
+n4d-pamnss (0.17) trusty; urgency=high
+
+  * Removing n4d cron
+
+ -- Hector Garcia Huerta <hectorgh@gmail.com>  Thu, 04 Dec 2014 12:00:02 +0100
+
+n4d-pamnss (0.16) trusty; urgency=high
+
+  * New releases for LliureX 15.05
+
+ -- Alfons Lloret Sananton <turix13@gmail.com>  Wed, 01 Oct 2014 12:11:45 +0200
+
+n4d-pamnss (0.15) precise; urgency=high
+
+  * Adding case sensitive check on logins
+  * Added module loading in postinst
+
+ -- Hector Garcia Huerta <hectorgh@gmail.com>  Fri, 04 Oct 2013 12:45:26 +0200
+
+n4d-pamnss (0.14) precise; urgency=high
+
+  * Restarting NSCD on nssiwtch initialization
+
+ -- Hector Garcia Huerta <hectorgh@gmail.com>  Sun, 23 Jun 2013 19:06:06 +0200
+
+n4d-pamnss (0.13) precise; urgency=low
+
+  * Added blank lines on templates
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Sun, 23 Jun 2013 19:04:28 +0200
+
+n4d-pamnss (0.12) precise; urgency=low
+
+  * Restart nscd only start machine
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Thu, 20 Jun 2013 18:47:54 +0200
+
+n4d-pamnss (0.11) precise; urgency=high
+
+  * Cp nsswitch on first instalation
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Fri, 14 Jun 2013 08:42:00 +0200
+
+n4d-pamnss (0.10) precise; urgency=low
+
+  * check exist nscd
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Thu, 13 Jun 2013 20:43:55 +0200
+
+n4d-pamnss (0.9) precise; urgency=high
+
+  * etc nsswitch is now fixed by default
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Wed, 12 Jun 2013 20:30:09 +0200
+
+n4d-pamnss (0.8) precise; urgency=low
+
+  * On startup reset nscd cache.
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Wed, 12 Jun 2013 20:28:48 +0200
+
+n4d-pamnss (0.7) precise; urgency=low
+
+  * Go back to install nsswitch on /etc
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Mon, 03 Jun 2013 19:00:33 +0200
+
+n4d-pamnss (0.6) precise; urgency=low
+
+  * Changed rules to better instalation
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Sat, 01 Jun 2013 20:55:26 +0200
+
+n4d-pamnss (0.5) precise; urgency=low
+
+  * nsswitch is writed on /run, other script execute mount --bind /run/nsswitch.conf
+    /etc/nsswitch.conf. This do best start server
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Thu, 30 May 2013 13:33:51 +0200
+
+n4d-pamnss (0.4) precise; urgency=low
+
+  * Use correct names to configure services
+  * Added json file with variables depends
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Thu, 30 May 2013 11:51:19 +0200
+
+n4d-pamnss (0.5) precise; urgency=low
+
+  * Update to fix postinst and preinst
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Wed, 27 Feb 2013 12:52:20 +0100
+
+n4d-pamnss (0.4) precise; urgency=low
+
+  * Use correct names to configure services
+  * Added json file with variables depends 
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Sat, 02 Feb 2013 13:55:14 +0100
+
+n4d-pamnss (0.3) precise; urgency=low
+
+  * First version with all the plugins available
+
+ -- Angel Berlanas Vicente <angel.berlanas@gmail.com>  Wed, 18 Jul 2012 13:01:06 +0200
+
+n4d-pamnss (0.2) precise; urgency=low
+
+  * Test Upgrade  
+
+ -- Angel Berlanas Vicente <lliurex_devel2@edu.gva.es>  Wed, 11 Jul 2012 12:30:00 +0200
+
+n4d-pamnss (0.1) precise; urgency=low
+
+  * Initial release.
+
+ -- Angel Berlanas Vicente <angel.berlanas@gmail.com>  Tue, 10 Jul 2012 11:05:57 +0200

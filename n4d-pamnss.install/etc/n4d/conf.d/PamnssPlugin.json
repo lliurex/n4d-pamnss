@@ -1,0 +1,80 @@
+{
+    "SETUP": {
+        "type": "python",
+        "path": "PamnssPlugin.py",
+        "class": "PamnssPlugin"
+    },
+    "METHODS": {
+	"startup":{
+            "allowed_groups": [
+                "sudo",
+                "admins",
+		"admin"
+            ]
+        },
+        "configure_ldap_environment_client": {
+            "allowed_groups": [
+                "sudo",
+                "admins",
+		"admin"
+            ]
+        },
+        "configure_ldap": {
+            "allowed_groups": [
+                "sudo",
+                "admins",
+		"admin"
+            ]
+        },
+        "configure_nsswitch": {
+            "allowed_groups": [
+                "sudo",
+                "admins",
+		"admin"
+            ]
+        },
+        "backup": {
+            "allowed_groups": [
+                "sudo",
+                "admins",
+		"admin"
+            ]
+        },
+        "test": {
+            "allowed_groups": [
+                "anonymous"
+            ]
+        },
+        "restore": {
+            "allowed_groups": [
+                "sudo",
+                "admins",
+		"admin"
+            ]
+        },
+        "restore_configuration": {
+            "allowed_groups": [
+                "sudo",
+                "admins",
+		"admin"
+            ]
+        },
+        "backup_configuration": {
+            "allowed_groups": [
+                "sudo",
+                "admins",
+		"admin"
+            ]
+        },
+        "check_network_authentication": {
+            "allowed_groups": [
+                "anonymous"
+            ]
+        },
+	"apt":{
+            "allowed_groups": [
+                "anonymous"
+            ]
+	}
+    }
+}

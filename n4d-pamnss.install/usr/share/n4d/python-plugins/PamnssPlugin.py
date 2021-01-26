@@ -1,15 +1,18 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
+
 from jinja2 import Environment
 from jinja2.loaders import FileSystemLoader
-import ConfigParser
+import configparser
 import tarfile
 import datetime
 import os, sys, shutil
 import os.path
 import tempfile
-import xmlrpclib
 import threading
 import time
+import n4d.server.core as n4dcore
+import n4d.responses
+
 
 class PamnssPlugin:
 
@@ -34,6 +37,7 @@ class PamnssPlugin:
 	
 	def __init__(self):
 		
+		self.core=n4dcore.Core.get_core()
 		self.failed={}
 		self.failed[1]=False
 		self.failed[2]=False
@@ -69,7 +73,8 @@ class PamnssPlugin:
 	
 	def is_client(self):
 		
-		if "REMOTE_VARIABLES_SERVER" in objects["VariablesManager"].variables:
+		#Old n4:if "REMOTE_VARIABLES_SERVER" in objects["VariablesManager"].variables:
+		if self.core.variable_exists('REMOTE_VARIABLES_SERVER')['return']:
 			return True
 		else:
 			return False
@@ -99,7 +104,8 @@ class PamnssPlugin:
 					self.retry_configuration(6)
 			
 					
-		return [True,True]
+		#Old n4d: eturn [True,True]
+		return n4d.responses.build_successful_call_response()
 	
 	#def startup(self):
 
@@ -116,16 +122,18 @@ class PamnssPlugin:
 	
 	def check_ldap_variables(self):
 		
+		'''
 		if  objects.has_key("VariablesManager"):
 			variables=objects["VariablesManager"].get_variable_list(["LDAP_BASE_DN","CLIENT_LDAP_URI"])
-			
-			for item in variables:
-				if variables[item]==False:
-					return False
+		'''
+		variables=self.core.get_variable_list(["LDAP_BASE_DN","CLIENT_LDAP_URI"])['return']
+		for item in variables:
+			if variables[item]==False:
+				return False
 					
-			return True
+		return True
 		
-		return False
+		#return False
 		
 	#def check_ldap_variables
 	
@@ -162,7 +170,7 @@ class PamnssPlugin:
 		
 		for try_ in range(0,tries):
 			if not self.check_configured_status():
-				print "\t[STARTUP][PamnssPlugin] Retrying %s..."%try_
+				print("\t[STARTUP][PamnssPlugin] Retrying %s..."%try_)
 				time.sleep(2)
 				options={}
 				options["controlled"]=True
@@ -193,16 +201,18 @@ class PamnssPlugin:
 
 		# XMLRPC Debug
 		# if True:
-		if  objects.has_key("VariablesManager"):
-			ldap_environment_variables=objects["VariablesManager"].get_variable_list(["LDAP_BASE_DN","CLIENT_LDAP_URI"])
-			if not self.check_variables(ldap_environment_variables):
-				self.failed[1]=True
-				return [False,False]
-			else:
-				self.failed[1]=False
+		#Old n4dif  objects.has_key("VariablesManager"):
+			#Old n4d ldap_environment_variables=objects["VariablesManager"].get_variable_list(["LDAP_BASE_DN","CLIENT_LDAP_URI"])
+		ldap_environment_variables=self.core.get_variable_list(["LDAP_BASE_DN","CLIENT_LDAP_URI"])['return']
+		if not self.check_variables(ldap_environment_variables):
+			self.failed[1]=True
+			#Old n4d: return [False,False]
+			return n4d.responses.build_failed_call_response()
+		else:
+			self.failed[1]=False
 							
-			if os.path.exists("/var/lib/n4d/variables-dir/LDAP_SID"):
-				ldap_environment_variables["CLIENT_LDAP_URI"]="ldaps://localhost"
+		if os.path.exists("/var/lib/n4d/variables-dir/LDAP_SID"):
+			ldap_environment_variables["CLIENT_LDAP_URI"]="ldaps://localhost"
 			
 		# Temporal file creation
 		path_to_work=tempfile.mkdtemp()
@@ -222,13 +232,14 @@ class PamnssPlugin:
 		f.close()
 		
 		# Using the ultimate chmod
-		self.uchmod(filename,0644)
+		self.uchmod(filename,0o644)
 
 		# Copy unitaria
 		shutil.copy(filename,PamnssPlugin.LDAP_ENVIRONMENT_CLIENT_DESTINATION)
 		os.remove(filename)
 		
-		return [True,True]
+		#Old n4d: return [True,True]
+		return n4d.responses.build_successful_call_response()
 		
 	# def  configure_ldap_environment_client(self):
 	
@@ -240,17 +251,22 @@ class PamnssPlugin:
 	
 		# XMLRPC Debug
 		# if True:
+		'''
 		if  objects.has_key("VariablesManager"):
 			ldap_variables=objects["VariablesManager"].get_variable_list(["LDAP_BASE_DN","CLIENT_LDAP_URI_NOSSL"])
-			if not self.check_variables(ldap_variables):
-				self.failed[2]=True
-				return [False,False]
-			else:
-				self.failed[2]=False
+		'''
+		ldap_variables=self.core.get_variables_list(["LDAP_BASE_DN","CLIENT_LDAP_URI_NOSSL"])['return']
+		
+		if not self.check_variables(ldap_variables):
+			self.failed[2]=True
+			#Old n4d: return [False,False]
+			return n4d.responses.build_failed_call_response()
+		else:
+			self.failed[2]=False
 			
 				
-			if os.path.exists("/var/lib/n4d/variables-dir/LDAP_SID"):
-				ldap_variables["CLIENT_LDAP_URI_NOSSL"]="ldap://localhost"
+		if os.path.exists("/var/lib/n4d/variables-dir/LDAP_SID"):
+			ldap_variables["CLIENT_LDAP_URI_NOSSL"]="ldap://localhost"
 			
 	
 		# Create temporal environment for jinja
@@ -267,13 +283,14 @@ class PamnssPlugin:
 		f.close()
 		
 		# Using the ultimate chmod
-		self.uchmod(filename,0644)
+		self.uchmod(filename,0o644)
 		
 		# Move to the final destination
 		shutil.copy(filename,PamnssPlugin.LDAP_DESTINATION)
 		os.remove(filename)
 		
-		return [True,True]
+		#Old n4d: return [True,True]
+		return n4d.responses.build_successful_call_response()
 		
 	#def configure_ldap(self):
 		
@@ -297,7 +314,7 @@ class PamnssPlugin:
 		f.writelines(textrendered)
 		f.close()
 		
-		self.uchmod(filename,0644)
+		self.uchmod(filename,0o644)
 		
 		# Copy unitaria
 		shutil.copy(filename,PamnssPlugin.NSSWITCH_DESTINATION)
@@ -313,7 +330,8 @@ class PamnssPlugin:
 				
 		
 		
-		return [True,True]
+		#Old n4d: return [True,True]
+		return n4d.responses.build_successful_call_response()
 	# def configure_nsswitch
 	
 	def configure_nslcd(self):
@@ -321,7 +339,8 @@ class PamnssPlugin:
 		env = Environment(loader=FileSystemLoader(PamnssPlugin.TEMPLATES_PATH))
 		tmpl = env.get_template('nslcd.conf')
 		vars={}
-		vars=objects["VariablesManager"].get_variable_list(["LDAP_BASE_DN","CLIENT_LDAP_URI_NOSSL"])
+		#Old n4d: vars=objects["VariablesManager"].get_variable_list(["LDAP_BASE_DN","CLIENT_LDAP_URI_NOSSL"])
+		vars=self.core.get_variable_list(["LDAP_BASE_DN","CLIENT_LDAP_URI_NOSSL"])['return']
 	
 		if not self.check_variables(vars):
 			self.failed[3]=True
@@ -343,6 +362,7 @@ class PamnssPlugin:
 		os.system("chmod 640 %s;chown root:nslcd %s"%(filename,filename))
 		os.system("diff %s %s 1>/dev/null || { cp %s %s; systemctl restart nslcd; sleep 1; systemctl restart nslcd; } "%(filename,PamnssPlugin.NSLCD_DESTINATION,filename,PamnssPlugin.NSLCD_DESTINATION))
 		os.remove(filename)
+		
 		return True
 		
 		
@@ -358,7 +378,8 @@ class PamnssPlugin:
 	#def backup(self):
 	
 	def test(self):
-		return [True, True]
+		#Old n4d: return [True, True]
+		return n4d.responses.build_successful_call_response()
 	#def test(self):
 	
 	
@@ -378,8 +399,8 @@ class PamnssPlugin:
 		
 		# Exists the file?
 		if not os.path.exists(path):
-			return [False, "[N4D]  PamnssPlugin -Restore- Tar File is not present"]
-		
+			#Old n4d: return [False, "[N4D]  PamnssPlugin -Restore- Tar File is not present"]
+			return n4d.responses.build_failed_call_response('','[N4D]  PamnssPlugin -Restore- Tar File is not present')
 		# Extract to temporal directory
 		path_to_work=tempfile.mkdtemp()
 	
@@ -388,13 +409,14 @@ class PamnssPlugin:
 		tar.close()
 		
 		path_to_work=path_to_work+"/"+self.__class__.__name__+"/"
-		print path_to_work
+		print(path_to_work)
 		
 		# First read the configuration from n4d-config-ini
 		if not os.path.exists(path_to_work+"n4d-config.ini"):
-			return [False, "[N4D] - PamnssPlugin -Restore- Configuration File is not present"]
-	
-		Config = ConfigParser.ConfigParser()
+			#Old n4d return [False, "[N4D] - PamnssPlugin -Restore- Configuration File is not present"]
+			return n4d.responses.build_failed_call_response('',"[N4D] - PamnssPlugin -Restore- Configuration File is not present")
+
+		Config = configparser.ConfigParser()
 		Config.read(path_to_work+"n4d-config.ini")
 		
 		for section in Config.sections():
@@ -406,13 +428,14 @@ class PamnssPlugin:
 			
 			# Create path in destination if not exists
 			if not os.path.isdir(os.path.dirname(dest_path)):
-				os.makedirs(os.path.dirname(dest_path),0755)
+				os.makedirs(os.path.dirname(dest_path),0o755)
 
 			# Copy the file to destination
 			shutil.copy(path_to_work+back_file,dest_path)
 			print (path_to_work+back_file,dest_path)
 
-		return [True, True]
+		#Old n4d. return [True, True]
+		return n4d.responses.build_successful_call_response()
 		
 	#def restore_configuration(self, path=BACKUP_DEFAULT_PATH):
 		
@@ -423,7 +446,7 @@ class PamnssPlugin:
 		path_to_work=tempfile.mkdtemp()+"/"
 
 		# Create config to backup the files
-		Config = ConfigParser.ConfigParser()
+		Config = configparser.ConfigParser()
 		backupCfg= open(path_to_work+"n4d-config.ini","w")
 
 		# Copy the configuration files to the path
@@ -477,21 +500,25 @@ class PamnssPlugin:
 			tar.add(path_to_work,arcname=self.__class__.__name__)
 			tar.close()
 
-			return [True, path_to_backup]
+			#Old n4d: return [True, path_to_backup]
+			return n4d.responses.build_successful_call_response(path_to_backup)
 			
 		except IOError as e:
 			
 			# something is going wrong
-			return [False, "[N4D] I/O error({0}): {1}".format(e.errno, e.strerror)]
+			#Old n4d: return [False, "[N4D] I/O error({0}): {1}".format(e.errno, e.strerror)]
+			return n4d.responses.build_failed_call_response('','[N4D] I/O error({0}): {1}'.format(e.errno, e.strerror))
 	#def backup_configuration(self,path=BACKUP_DEFAULT_PATH):
 			
 
 	def check_network_authentication(self):
 		
 		if  self.nsswitch_enable and self.ldap_enable : 
-			return [True,True]
+			#Old n4d: return [True,True]
+			return n4d.responses.build_successful_call_response(True)
 		else:
-			return [True,False]
+			#Old n4d: return [True,False]
+			return n4d.responses.build_successful_call_response(False)
 	#def check_network_authentication(self):
 
 #class PamnssPlugin

@@ -74,7 +74,7 @@ class PamnssPlugin:
 	def is_client(self):
 		
 		#Old n4:if "REMOTE_VARIABLES_SERVER" in objects["VariablesManager"].variables:
-		if self.core.variable_exists('REMOTE_VARIABLES_SERVER')['return']:
+		if self.core.variable_exists('REMOTE_VARIABLES_SERVER').get('return',None):
 			return True
 		else:
 			return False
@@ -126,7 +126,7 @@ class PamnssPlugin:
 		if  objects.has_key("VariablesManager"):
 			variables=objects["VariablesManager"].get_variable_list(["LDAP_BASE_DN","CLIENT_LDAP_URI"])
 		'''
-		variables=self.core.get_variable_list(["LDAP_BASE_DN","CLIENT_LDAP_URI"])['return']
+		variables=self.core.get_variable_list(["LDAP_BASE_DN","CLIENT_LDAP_URI"]).get('return',None)
 		for item in variables:
 			if variables[item]==False:
 				return False
@@ -203,7 +203,7 @@ class PamnssPlugin:
 		# if True:
 		#Old n4dif  objects.has_key("VariablesManager"):
 			#Old n4d ldap_environment_variables=objects["VariablesManager"].get_variable_list(["LDAP_BASE_DN","CLIENT_LDAP_URI"])
-		ldap_environment_variables=self.core.get_variable_list(["LDAP_BASE_DN","CLIENT_LDAP_URI"])['return']
+		ldap_environment_variables=self.core.get_variable_list(["LDAP_BASE_DN","CLIENT_LDAP_URI"]).get('return',None)
 		if not self.check_variables(ldap_environment_variables):
 			self.failed[1]=True
 			#Old n4d: return [False,False]
@@ -255,7 +255,7 @@ class PamnssPlugin:
 		if  objects.has_key("VariablesManager"):
 			ldap_variables=objects["VariablesManager"].get_variable_list(["LDAP_BASE_DN","CLIENT_LDAP_URI_NOSSL"])
 		'''
-		ldap_variables=self.core.get_variables_list(["LDAP_BASE_DN","CLIENT_LDAP_URI_NOSSL"])['return']
+		ldap_variables=self.core.get_variables_list(["LDAP_BASE_DN","CLIENT_LDAP_URI_NOSSL"]).get('return',None)
 		
 		if not self.check_variables(ldap_variables):
 			self.failed[2]=True
@@ -340,7 +340,7 @@ class PamnssPlugin:
 		tmpl = env.get_template('nslcd.conf')
 		vars={}
 		#Old n4d: vars=objects["VariablesManager"].get_variable_list(["LDAP_BASE_DN","CLIENT_LDAP_URI_NOSSL"])
-		vars=self.core.get_variable_list(["LDAP_BASE_DN","CLIENT_LDAP_URI_NOSSL"])['return']
+		vars=self.core.get_variable_list(["LDAP_BASE_DN","CLIENT_LDAP_URI_NOSSL"]).get('return',None)
 	
 		if not self.check_variables(vars):
 			self.failed[3]=True

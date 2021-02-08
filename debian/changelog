@@ -1,3 +1,9 @@
+n4d-pamnss (0.51) focal; urgency=medium
+
+  * Initial release for focal
+
+ -- Juan Ramon Pelegrina <juapesai@hotmail.com>  Mon, 08 Feb 2021 11:52:41 +0100
+
 n4d-pamnss (0.41) bionic; urgency=medium
 
   * Adding sudo group

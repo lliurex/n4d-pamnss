@@ -7,6 +7,6 @@ Standards-Version: 4.1.2
 
 Package: n4d-pamnss
 Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends},python2-jinja2,libpam-ldap,libnss-ldapd, n4d-lliurex-base (>= 0.7)
+Depends: ${shlibs:Depends}, ${misc:Depends},python3-jinja2,libpam-ldap,libnss-ldapd
 Description:  N4D Plugin for pamnss
  Pamnss plugin configuration for n4d 

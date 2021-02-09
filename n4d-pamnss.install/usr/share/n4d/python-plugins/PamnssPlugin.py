@@ -84,25 +84,24 @@ class PamnssPlugin:
 	
 	def startup(self,options):
 
-		if options["controlled"]:
-			self.configure_ldap_environment_client()
-			self.configure_ldap()
-			self.configure_nsswitch()
-			self.configure_nslcd()
+		self.configure_ldap_environment_client()
+		self.configure_ldap()
+		self.configure_nsswitch()
+		self.configure_nslcd()
 			
-			if self.check_configured_status():
-				if os.path.exists("/usr/sbin/nscd") and options['boot']:
-					os.system("nscd -i passwd")
-					os.system("nscd -i group")
-					os.system("nscd -i netgroup")
-					os.system("nscd -i services")
-					os.system("nscd -i hosts")
-					os.system("service nscd restart")
-			
-			if not options.has_key("manually_launched"):
-				if not self.check_configured_status():
-					self.retry_configuration(6)
-			
+		if self.check_configured_status():
+			if os.path.exists("/usr/sbin/nscd") and options['boot']:
+				os.system("nscd -i passwd")
+				os.system("nscd -i group")
+				os.system("nscd -i netgroup")
+				os.system("nscd -i services")
+				os.system("nscd -i hosts")
+				os.system("service nscd restart")
+		
+		if not options.has_key("manually_launched"):
+			if not self.check_configured_status():
+				self.retry_configuration(6)
+		
 					
 		#Old n4d: eturn [True,True]
 		return n4d.responses.build_successful_call_response()

@@ -98,7 +98,7 @@ class PamnssPlugin:
 				os.system("nscd -i hosts")
 				os.system("service nscd restart")
 		
-		if not options.has_key("manually_launched"):
+		if "manually_launched" not in options:
 			if not self.check_configured_status():
 				self.retry_configuration(6)
 		

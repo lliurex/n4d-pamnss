@@ -254,7 +254,7 @@ class PamnssPlugin:
 		if  objects.has_key("VariablesManager"):
 			ldap_variables=objects["VariablesManager"].get_variable_list(["LDAP_BASE_DN","CLIENT_LDAP_URI_NOSSL"])
 		'''
-		ldap_variables=self.core.get_variables_list(["LDAP_BASE_DN","CLIENT_LDAP_URI_NOSSL"]).get('return',None)
+		ldap_variables=self.core.get_variable_list(["LDAP_BASE_DN","CLIENT_LDAP_URI_NOSSL"]).get('return',None)
 		
 		if not self.check_variables(ldap_variables):
 			self.failed[2]=True

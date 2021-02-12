@@ -25,7 +25,7 @@ case "$1" in
 		chmod 644 /etc/nsswitch.conf
 	fi
 	
-	n4d-modules enable-plugin /etc/n4d/conf.d/PamnssPlugin || true
+	n4d-modules enable-plugin /etc/n4d/conf.d/PamnssPlugin.json || true
 	
     ;;
 

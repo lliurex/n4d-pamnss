@@ -1,3 +1,9 @@
+n4d-pamnss (0.52.4) focal; urgency=medium
+
+  * fixed n4d-modules call
+
+ -- Hector Garcia Huerta <hectorgh@gmail.com>  Fri, 12 Feb 2021 15:28:09 +0100
+
 n4d-pamnss (0.52.3) focal; urgency=medium
 
   * Fixed has_key from python2

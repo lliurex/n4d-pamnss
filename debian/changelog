@@ -1,3 +1,9 @@
+n4d-pamnss (0.53) focal; urgency=medium
+
+  * fixed n4d.utils import 
+
+ -- Hector Garcia Huerta <hectorgh@gmail.com>  Tue, 06 Jul 2021 13:23:13 +0200
+
 n4d-pamnss (0.52.4) focal; urgency=medium
 
   * fixed n4d-modules call

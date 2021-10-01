@@ -101,7 +101,7 @@ class PamnssPlugin:
 		
 		if "manually_launched" not in options:
 			if not self.check_configured_status():
-				self.retry_configuration(6)
+				self.retry_configuration(10)
 		
 					
 		#Old n4d: eturn [True,True]

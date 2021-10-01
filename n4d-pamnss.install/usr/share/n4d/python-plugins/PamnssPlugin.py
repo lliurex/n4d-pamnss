@@ -112,6 +112,9 @@ class PamnssPlugin:
 	
 	def check_variables(self,dic):
 		
+		if len(dic)==0:
+			return False
+		
 		for item in dic:
 			if dic[item]==None:
 				return False

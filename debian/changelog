@@ -1,3 +1,9 @@
+n4d-pamnss (0.54.1) focal; urgency=medium
+
+  * Incremented configuration retries
+
+ -- Hector Garcia Huerta <hectorgh@gmail.com>  Fri, 01 Oct 2021 09:28:12 +0200
+
 n4d-pamnss (0.54) focal; urgency=medium
 
   * Fixed check_variables. Should fix rewritting ldap.conf file with empty

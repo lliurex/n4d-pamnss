@@ -1,3 +1,10 @@
+n4d-pamnss (0.54) focal; urgency=medium
+
+  * Fixed check_variables. Should fix rewritting ldap.conf file with empty
+    values. If it fails, at least it will keep old values
+
+ -- Hector Garcia Huerta <hectorgh@gmail.com>  Fri, 01 Oct 2021 09:17:05 +0200
+
 n4d-pamnss (0.53) focal; urgency=medium
 
   * fixed n4d.utils import 

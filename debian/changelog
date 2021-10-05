@@ -1,3 +1,9 @@
+n4d-pamnss (0.55) focal; urgency=medium
+
+  * Changed nslcd configuration logic
+
+ -- Hector Garcia Huerta <hectorgh@gmail.com>  Tue, 05 Oct 2021 11:20:59 +0200
+
 n4d-pamnss (0.54.1) focal; urgency=medium
 
   * Incremented configuration retries

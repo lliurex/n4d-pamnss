@@ -330,7 +330,7 @@ class PamnssPlugin:
 			self.failed[3]=False
 
 		
-		if os.path.exists("/usr/share/n4d/python-plugins/Golem.py"):
+		if os.path.exists("/var/lib/n4d/variables-dir/LDAP_SID"):
 			vars["CLIENT_LDAP_URI_NOSSL"]="ldap://localhost"
 				
 				

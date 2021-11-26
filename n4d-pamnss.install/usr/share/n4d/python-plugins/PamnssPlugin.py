@@ -214,7 +214,7 @@ class PamnssPlugin:
 		else:
 			self.failed[1]=False
 							
-		if os.path.exists("/var/lib/n4d/variables-dir/LDAP_SID"):
+		if os.path.exists("/var/lib/n4d/variables/LDAP_SID"):
 			ldap_environment_variables["CLIENT_LDAP_URI"]="ldaps://localhost"
 			
 		# Temporal file creation
@@ -268,7 +268,7 @@ class PamnssPlugin:
 			self.failed[2]=False
 			
 				
-		if os.path.exists("/var/lib/n4d/variables-dir/LDAP_SID"):
+		if os.path.exists("/var/lib/n4d/variables/LDAP_SID"):
 			ldap_variables["CLIENT_LDAP_URI_NOSSL"]="ldap://localhost"
 			
 	
@@ -352,7 +352,7 @@ class PamnssPlugin:
 			self.failed[3]=False
 
 		
-		if os.path.exists("/var/lib/n4d/variables-dir/LDAP_SID"):
+		if os.path.exists("/var/lib/n4d/variables/LDAP_SID"):
 			vars["CLIENT_LDAP_URI_NOSSL"]="ldap://localhost"
 				
 				

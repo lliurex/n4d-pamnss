@@ -306,7 +306,7 @@ class PamnssPlugin:
 		# Get the template from templates library
 		env = Environment(loader=FileSystemLoader(PamnssPlugin.TEMPLATES_PATH))
 		tmpl = env.get_template('etc.nsswitch.conf')
-		enable_nss_ldap={}
+		enable_nss_ldap=self.core.get_variable_list(["ENABLE_CDC"]).get('return',None)
 		enable_nss_ldap["ENABLE_NSS_LDAP"]="ENABLED"
 		# Render the template
 		textrendered=tmpl.render(enable_nss_ldap)

@@ -1,3 +1,9 @@
+n4d-pamnss (0.58.1) focal; urgency=medium
+
+  * Read ENABLE_CDC variable to render template
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Thu, 12 May 2022 12:15:13 +0200
+
 n4d-pamnss (0.58) focal; urgency=medium
 
   * Add support to CDC users 

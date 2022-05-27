@@ -1,3 +1,9 @@
+n4d-pamnss (0.59) focal; urgency=medium
+
+  * Merge teachers, students and admins groups (ldap and cdc mapper)
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Fri, 27 May 2022 12:44:46 +0200
+
 n4d-pamnss (0.58.1) focal; urgency=medium
 
   * Read ENABLE_CDC variable to render template

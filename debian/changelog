@@ -1,3 +1,9 @@
+n4d-pamnss (0.43) bionic; urgency=medium
+
+  * Add support to CDC users
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Wed, 01 Jun 2022 12:36:41 +0200
+
 n4d-pamnss (0.42) bionic; urgency=medium
 
   * changing nslcd configuration logic

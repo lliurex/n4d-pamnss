@@ -1,3 +1,9 @@
+n4d-pamnss (0.44) bionic; urgency=medium
+
+  * Merge all components nsswitch 
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Fri, 03 Jun 2022 14:26:06 +0200
+
 n4d-pamnss (0.43) bionic; urgency=medium
 
   * Add support to CDC users

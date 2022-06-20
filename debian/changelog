@@ -1,3 +1,9 @@
+n4d-pamnss (0.60) lliurex22; urgency=medium
+
+  * 
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Mon, 20 Jun 2022 13:44:08 +0200
+
 n4d-pamnss (0.59ubuntu1) lliurex22; urgency=medium
 
   * Extend merge to all nsswitch components

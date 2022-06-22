@@ -116,7 +116,7 @@ class PamnssPlugin:
 	
 	def check_ldap_variables(self):
 		
-		if  objects.has_key("VariablesManager"):
+		if	objects.has_key("VariablesManager"):
 			variables=objects["VariablesManager"].get_variable_list(["LDAP_BASE_DN","CLIENT_LDAP_URI"])
 			
 			for item in variables:
@@ -193,7 +193,7 @@ class PamnssPlugin:
 
 		# XMLRPC Debug
 		# if True:
-		if  objects.has_key("VariablesManager"):
+		if	objects.has_key("VariablesManager"):
 			ldap_environment_variables=objects["VariablesManager"].get_variable_list(["LDAP_BASE_DN","CLIENT_LDAP_URI"])
 			if not self.check_variables(ldap_environment_variables):
 				self.failed[1]=True
@@ -240,7 +240,7 @@ class PamnssPlugin:
 	
 		# XMLRPC Debug
 		# if True:
-		if  objects.has_key("VariablesManager"):
+		if	objects.has_key("VariablesManager"):
 			ldap_variables=objects["VariablesManager"].get_variable_list(["LDAP_BASE_DN","CLIENT_LDAP_URI_NOSSL"])
 			if not self.check_variables(ldap_variables):
 				self.failed[2]=True
@@ -287,7 +287,8 @@ class PamnssPlugin:
 		env = Environment(loader=FileSystemLoader(PamnssPlugin.TEMPLATES_PATH))
 		tmpl = env.get_template('etc.nsswitch.conf')
 		enable_nss_ldap={}
-		enable_nss_ldap=objects["VariablesManager"].get_variable_list(["ENABLE_CDC"])
+		if os.path.exists("/etc/sssd/sssd.conf"):
+			enable_nss_ldap["ENABLE_CDC"]="ENABLED"
 
 		enable_nss_ldap["ENABLE_NSS_LDAP"]="ENABLED"
 		# Render the template
@@ -490,7 +491,7 @@ class PamnssPlugin:
 
 	def check_network_authentication(self):
 		
-		if  self.nsswitch_enable and self.ldap_enable : 
+		if	self.nsswitch_enable and self.ldap_enable : 
 			return [True,True]
 		else:
 			return [True,False]

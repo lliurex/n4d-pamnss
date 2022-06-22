@@ -1,3 +1,9 @@
+n4d-pamnss (0.61.1) lliurex22; urgency=medium
+
+  * Fix
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Wed, 22 Jun 2022 13:43:10 +0200
+
 n4d-pamnss (0.61) lliurex22; urgency=medium
 
   * Check if sssd exists

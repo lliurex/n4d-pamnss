@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+!/usr/bin/python3
 
 from jinja2 import Environment
 from jinja2.loaders import FileSystemLoader
@@ -306,7 +306,9 @@ class PamnssPlugin:
 		# Get the template from templates library
 		env = Environment(loader=FileSystemLoader(PamnssPlugin.TEMPLATES_PATH))
 		tmpl = env.get_template('etc.nsswitch.conf')
-		enable_nss_ldap=self.core.get_variable_list(["ENABLE_CDC"]).get('return',None)
+		enable_nss_ldap={}
+		if os.path.exists("/etc/sssd/sssd.conf"):
+			enable_nss_ldap["ENABLE_CDC"] = "ENABLED"
 		enable_nss_ldap["ENABLE_NSS_LDAP"]="ENABLED"
 		# Render the template
 		textrendered=tmpl.render(enable_nss_ldap)

@@ -1,3 +1,9 @@
+n4d-pamnss (0.62) lliurex22; urgency=medium
+
+  * Remove merge option from nsswitch
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Thu, 19 Jan 2023 12:23:32 +0100
+
 n4d-pamnss (0.61.1) lliurex22; urgency=medium
 
   * Fix
